@@ -1,4 +1,5 @@
 import React from "react";
+import LoginForm from "../components/auth/LoginForm";
 
 const LoginPage = () => {
   return (
@@ -13,57 +14,17 @@ const LoginPage = () => {
               alt="auth_illustration"
             />
             <div>
-              <h1 class="mb-3 text-4xl font-bold lg:text-[40px]">Facehook</h1>
+              <h1 class="mb-3 text-4xl font-bold lg:text-[40px]">Blogify</h1>
               <p class="max-w-[452px] text-gray-600/95 lg:text-lg">
-                Create a social media app with features like, showing the post,
-                post details, reactions, comments and profile.
+                Create a blog website, showing the blog, blog details,
+                reactions, comments and profile.
               </p>
             </div>
           </div>
 
           <div className="  bg-[#030317] p-8 rounded-md mt-12">
             <h2 className="text-2xl font-bold mb-6">Login</h2>
-            <form action="">
-              <div className="mb-6">
-                <label for="email" className="block mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  className="w-full p-3 bg-[#030317] border border-white/20 rounded-md focus:outline-none focus:border-indigo-500"
-                />
-              </div>
-              <div className="mb-6">
-                <label for="password" className="block mb-2">
-                  Password
-                </label>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  className="w-full p-3 bg-[#030317] border border-white/20 rounded-md focus:outline-none focus:border-indigo-500"
-                />
-              </div>
-              <div className="mb-6">
-                <button
-                  type="submit"
-                  className="w-full bg-indigo-600 text-white p-3 rounded-md hover:bg-indigo-700 transition-all duration-200"
-                >
-                  Login
-                </button>
-              </div>
-              <p className="text-center text-white">
-                Don't have an account?{" "}
-                <a
-                  href="./register.html"
-                  className="text-indigo-600 hover:underline"
-                >
-                  Register
-                </a>
-              </p>
-            </form>
+            <LoginForm />
           </div>
         </div>
       </div>
