@@ -1,8 +1,11 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import Filed from "../common/Filed";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -11,6 +14,7 @@ const LoginForm = () => {
 
   const submitForm = (formData) => {
     console.log(formData);
+    navigate("/");
   };
   return (
     <form onSubmit={handleSubmit(submitForm)} autoComplete="off">
