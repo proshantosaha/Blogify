@@ -7,15 +7,16 @@ import LogOut from "../auth/LogOut";
 
 const Header = () => {
   return (
-    <header>
-      <nav className="container">
-        {/* <!-- Logo --> */}
+    <nav className=" bg-black  ">
+      {/* <!-- Logo --> */}
+
+      <div className="container flex flex-col items-center justify-between gap-6 sm:flex-row">
+        {" "}
         <div>
           <Link to="/">
-            <img className="w-32" src={Ps} alt="lws" />
+            <img className="w-10" src={Ps} alt="lws" />
           </Link>
         </div>
-
         {/* <!-- Actions - Login, Write, Home, Search --> */}
         {/* <!-- Notes for Developers --> */}
         {/* <!-- For Logged in User - Write, Profile, Logout Menu --> */}
@@ -24,17 +25,14 @@ const Header = () => {
           <ul className="flex items-center space-x-5">
             <li>
               <Link
-                to="./createBlog.html"
+                to=""
                 className="bg-indigo-600 text-white px-6 py-2 md:py-3 rounded-md hover:bg-indigo-700 transition-all duration-200"
               >
                 Write
               </Link>
             </li>
             <li>
-              <Link
-                to="./search.html"
-                className="flex items-center gap-2 cursor-pointer"
-              >
+              <Link to="" className="flex items-center gap-2 cursor-pointer">
                 <img src={SearchIcons} alt="Search" />
                 <span>Search</span>
               </Link>
@@ -52,15 +50,15 @@ const Header = () => {
               </div>
 
               {/* <!-- Logged-in user's name --> */}
-              <Link tp="./profile.html">
+              <Link tp="">
                 <span className="text-white ml-2">Saad Hasan</span>
               </Link>
               {/* <!-- Profile Image --> */}
             </li>
           </ul>
         </div>
-      </nav>
-    </header>
+      </div>
+    </nav>
   );
 };
 

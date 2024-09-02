@@ -6,16 +6,17 @@ import ProfilePage from "./pages/ProfilePage";
 import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import PrivateRoutes from "./routes/PrivateRoutes";
 
 const App = () => {
   return (
     <>
       {" "}
       <Routes>
-        {/* <Route element={<PrivetRoute />}> */}
-        <Route element={<HomePage />} path="/" exact />
-        <Route element={<ProfilePage />} path="/me" />
-        {/* </Route> */}
+        <Route element={<PrivateRoutes />}>
+          <Route element={<HomePage />} path="/" exact />
+          <Route element={<ProfilePage />} path="/me" />
+        </Route>
 
         <Route element={<LoginPage />} path="/login" />
         <Route element={<RegistrationPage />} path="/register" />
