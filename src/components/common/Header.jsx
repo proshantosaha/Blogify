@@ -4,8 +4,10 @@ import SearchIcons from "../../assets/icons/search.svg";
 import Avatar from "../../assets/avatar.png";
 import { Link } from "react-router-dom";
 import LogOut from "../auth/LogOut";
+import { useAuth } from "../../hooks/useAuth";
 
 const Header = () => {
+  const { auth } = useAuth();
   return (
     <nav className=" bg-black  ">
       {/* <!-- Logo --> */}
@@ -44,15 +46,18 @@ const Header = () => {
               {/* <!-- Circular Div with background color --> */}
               <div className="avater-img bg-orange-600 text-white">
                 <span className="">
-                  <img src={Avatar} alt="avatar" />
+                  <img src={auth?.user?.avater} alt="avatar" />
                 </span>
                 {/* <!-- User's first name initial --> */}
               </div>
 
               {/* <!-- Logged-in user's name --> */}
-              <Link tp="">
-                <span className="text-white ml-2">Saad Hasan</span>
+              <Link to="/me">
+                <span className="text-white ml-2">
+                  {auth?.user?.firstName}:{auth?.user?.lastName}
+                </span>
               </Link>
+
               {/* <!-- Profile Image --> */}
             </li>
           </ul>
