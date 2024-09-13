@@ -5,6 +5,8 @@ import axios from "axios";
 
 const useAxios = () => {
   const { auth, setAuth } = useAuth();
+  console.log(auth);
+
   useEffect(() => {
     // add a request intercepter
 

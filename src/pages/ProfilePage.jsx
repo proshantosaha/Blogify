@@ -24,7 +24,7 @@ const ProfilePage = () => {
         );
         console.log(response);
 
-        setUser(response?.data);
+        setUser(response?.user?.id);
         setBlogs(response?.data?.blogs);
       } catch (error) {
         console.log(error);
