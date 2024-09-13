@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import customFetch from "../utils/customFetch";
 import { useAuth } from "./useAuth";
 import axios from "axios";
 
 const useAxios = () => {
   const { auth, setAuth } = useAuth();
-  console.log(auth);
+  // console.log(auth);
 
   useEffect(() => {
     // add a request intercepter
@@ -28,11 +28,10 @@ const useAxios = () => {
         if (error.response.status === 401 && !originalRequest._retry) {
           originalRequest._retry = true;
           try {
-            const refreshToken = auth?.refreshToken;
-            const response = await axios.post(
-              `${BASE_URL}/auth/refresh-token`,
-              { refreshToken }
-            );
+            // const refreshToken = auth?.refreshToken;
+            const response = await customFetch.post(`/auth/refresh-token`, {
+              refreshToken,
+            });
             const { token } = response.data;
             console.log(`new token:${token}`);
             setAuth({ ...auth, authToken: token });

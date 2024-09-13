@@ -2,18 +2,21 @@ import { useEffect, useState } from "react";
 import useAxios from "../hooks/useAxios";
 import { BASE_URL } from "../constant";
 import { useAuth } from "../hooks/useAuth";
+import { useProfile } from "../hooks/useProfile";
 
 const ProfilePage = () => {
   const { auth } = useAuth();
-
-  const [user, setUser] = useState(null);
-  const [blogs, setBlogs] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  const [error, setError] = useState(null);
-
   const { customFetch } = useAxios();
-  console.log(user);
+
+  useProfile();
+
+  // const [user, setUser] = useState(null);
+  // const [blogs, setBlogs] = useState([]);
+  // const [loading, setLoading] = useState(false);
+
+  // const [error, setError] = useState(null);
+
+  // console.log(user);
 
   useEffect(() => {
     setLoading(true);

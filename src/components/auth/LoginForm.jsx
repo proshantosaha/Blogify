@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import axios from "axios";
 import { BASE_URL } from "../../constant";
+// import useAxios from "../../hooks/useAxios";
+import customFetch from "../../utils/customFetch";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -19,12 +21,12 @@ const LoginForm = () => {
 
   const submitForm = async (formData) => {
     try {
-      const response = await axios.post(`${BASE_URL}/auth/login`, formData);
+      const response = await customFetch.post(`/auth/login`, formData);
 
       if (response.status === 200) {
         const { token, user } = response.data;
         if (token) {
-          const authToken = token.token;
+          const authToken = token.accessToken;
           const refreshToken = token.refreshToken;
 
           console.log(`login auth token : ${authToken}`);
@@ -33,7 +35,7 @@ const LoginForm = () => {
         }
       }
     } catch (error) {
-      // console.log(error);
+      console.log(error);
       // const errorMessage = error.response?.data?.message || `User with email ${formData.email} not found`;
 
       setError("root.random", {
@@ -84,7 +86,7 @@ const LoginForm = () => {
       <div className="mb-6">
         <Filed>
           <button
-            type="submit"
+            label="submit"
             className="w-full bg-indigo-600 text-white p-3 rounded-md hover:bg-indigo-700 transition-all duration-200"
           >
             Login

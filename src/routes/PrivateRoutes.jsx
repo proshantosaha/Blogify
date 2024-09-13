@@ -8,7 +8,9 @@ const PrivateRoutes = () => {
   const { auth } = useAuth();
   return (
     <>
-      {auth.user ? (
+      {console.log(auth)}
+
+      {auth?.authToken ? (
         <>
           <ProfileProvider>
             <Header />
