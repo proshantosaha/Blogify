@@ -16,10 +16,10 @@ const Header = () => {
   const user = state?.user ?? auth?.user;
 
   return (
-    <nav className=" bg-black  ">
+    <nav className="border-b-[1px] border-slate-800">
       {/* <!-- Logo --> */}
 
-      <div className="container flex flex-col items-center justify-between gap-6 sm:flex-row">
+      <div className="container flex flex-col items-center justify-between gap-6 sm:flex-row ">
         {" "}
         {console.log(user)}
         <div>
@@ -54,9 +54,10 @@ const Header = () => {
               {/* <!-- Circular Div with background color --> */}
               <div className="avater-img bg-orange-600 text-white">
                 <img
-                  src={`${import.meta.env.VITE_SERVER_BASE_URL}/${
-                    user?.avatar
-                  }`}
+                  className="w-full h-full rounded-full object-cover"
+                  src={`${
+                    import.meta.env.VITE_SERVER_BASE_URL
+                  }/uploads/avatar/${user?.avatar}`}
                   alt="avatar"
                 />
                 {/* <!-- User's first name initial --> */}

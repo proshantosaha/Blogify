@@ -3,6 +3,7 @@ import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import Header from "../components/common/Header";
 import ProfileProvider from "../provider/ProfileProvider";
+import Footer from "../../src/components/footer/Footer";
 
 const PrivateRoutes = () => {
   const { auth } = useAuth();
@@ -18,6 +19,7 @@ const PrivateRoutes = () => {
               <div className="container">
                 <Outlet />
               </div>
+              <Footer />
             </main>
           </ProfileProvider>
         </>
