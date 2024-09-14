@@ -3,12 +3,13 @@ import useAxios from "../hooks/useAxios";
 import { BASE_URL } from "../constant";
 import { useAuth } from "../hooks/useAuth";
 import { useProfile } from "../hooks/useProfile";
+import { actions } from "../actions";
 
 const ProfilePage = () => {
   const { auth } = useAuth();
   const { customFetch } = useAxios();
 
-  useProfile();
+  const { state, dispatch } = useProfile();
 
   // const [user, setUser] = useState(null);
   // const [blogs, setBlogs] = useState([]);
@@ -19,7 +20,7 @@ const ProfilePage = () => {
   // console.log(user);
 
   useEffect(() => {
-    setLoading(true);
+    dispatch({ type: actions.profile.DATA_FETCHING });
     const fetchProfile = async () => {
       try {
         const response = await customFetch.get(
@@ -27,25 +28,31 @@ const ProfilePage = () => {
         );
         console.log(response);
 
-        setUser(response?.user?.id);
-        setBlogs(response?.data?.blogs);
+        if (response.status === 200) {
+          dispatch({ type: actions.profile.DATA_FETCHED, data: response.data });
+        }
+
+        // setUser(response?.user?.id);
+        // setBlogs(response?.data?.blogs);
       } catch (error) {
         console.log(error);
-        setError(error);
-      } finally {
-        setLoading(false);
+        // setError(error);
+        dispatch({
+          type: actions.profile.DATA_FETCH_ERROR,
+          error: error.message,
+        });
       }
     };
     fetchProfile();
   }, []);
-  if (loading) {
+  if (state.loading) {
     return <div>Fetching your Profile data ....</div>;
   }
 
   return (
     <div>
-      Welcome,{user?.firstName} {user?.lastName}
-      <p> you have {blogs.length} blogs</p>{" "}
+      Welcome,{state?.user?.firstName} {state?.user?.lastName}
+      <p> you have {state?.blogs.length} blogs</p>{" "}
     </div>
   );
 };
