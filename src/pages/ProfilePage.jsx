@@ -4,6 +4,7 @@ import { BASE_URL } from "../constant";
 import { useAuth } from "../hooks/useAuth";
 import { useProfile } from "../hooks/useProfile";
 import { actions } from "../actions";
+import ProfileInfo from "../components/Profile/ProfileInfo";
 
 const ProfilePage = () => {
   const { auth } = useAuth();
@@ -17,7 +18,7 @@ const ProfilePage = () => {
 
   // const [error, setError] = useState(null);
 
-  // console.log(user);
+  console.log(state);
 
   useEffect(() => {
     dispatch({ type: actions.profile.DATA_FETCHING });
@@ -51,8 +52,7 @@ const ProfilePage = () => {
 
   return (
     <div>
-      Welcome,{state?.user?.firstName} {state?.user?.lastName}
-      <p> you have {state?.blogs.length} blogs</p>{" "}
+      <ProfileInfo />
     </div>
   );
 };

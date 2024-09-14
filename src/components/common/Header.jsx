@@ -1,19 +1,27 @@
 import React from "react";
 import Ps from "../../assets/ps.webp";
 import SearchIcons from "../../assets/icons/search.svg";
-import Avatar from "../../assets/avatar.png";
+// import Avatar from "../../assets/avatar.png";
 import { Link } from "react-router-dom";
 import LogOut from "../auth/LogOut";
 import { useAuth } from "../../hooks/useAuth";
+import { useProfile } from "../../hooks/useProfile";
+import { BASE_URL } from "../../constant";
 
 const Header = () => {
   const { auth } = useAuth();
+
+  const { state } = useProfile();
+
+  const user = state?.user ?? auth?.user;
+
   return (
     <nav className=" bg-black  ">
       {/* <!-- Logo --> */}
 
       <div className="container flex flex-col items-center justify-between gap-6 sm:flex-row">
         {" "}
+        {console.log(user)}
         <div>
           <Link to="/">
             <img className="w-10" src={Ps} alt="lws" />
@@ -45,16 +53,19 @@ const Header = () => {
             <li className="flex items-center">
               {/* <!-- Circular Div with background color --> */}
               <div className="avater-img bg-orange-600 text-white">
-                <span className="">
-                  <img src={auth?.user?.avater} alt="avatar" />
-                </span>
+                <img
+                  src={`${import.meta.env.VITE_SERVER_BASE_URL}/${
+                    user?.avatar
+                  }`}
+                  alt="avatar"
+                />
                 {/* <!-- User's first name initial --> */}
               </div>
 
               {/* <!-- Logged-in user's name --> */}
               <Link to="/me">
                 <span className="text-white ml-2">
-                  {auth?.user?.firstName}:{auth?.user?.lastName}
+                  {user?.firstName} :{user?.lastName}
                 </span>
               </Link>
 
