@@ -24,6 +24,7 @@ const profileReducer = (state, action) => {
         loading: false,
       };
     }
+
     case actions.profile.DATA_FETCH_ERROR: {
       return {
         ...state,
@@ -31,7 +32,13 @@ const profileReducer = (state, action) => {
         error: action.error,
       };
     }
-
+    case actions.profile.USER_DATA_EDITED: {
+      return {
+        ...state,
+        loading: false,
+        user: action.data,
+      };
+    }
     default: {
       return state;
     }
