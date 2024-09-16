@@ -15,13 +15,13 @@ const Bio = () => {
   const handleBioEdit = async () => {
     dispatch({ type: actions.profile.DATA_FETCHING });
     try {
-      const response = await customFetch.patch(`/profile/`, { bio });
+      const response = await customFetch.patch(`/profile/`, { bio: bio });
       // `${BASE_URL}/profile/${auth?.user?.id}
 
       if (response.status === 200) {
         dispatch({
-          type: actions.profile.USER_DATA_EDITED,
-          data: response?.data,
+          type: actions?.profile.USER_DATA_EDITED,
+          data: response?.data?.user,
         });
       }
       setEditMode(false);
@@ -31,7 +31,6 @@ const Bio = () => {
         error: error.message,
       });
     }
-    setBioText(bio);
   };
 
   return (
@@ -40,7 +39,7 @@ const Bio = () => {
         <div className="flex-1">
           {!editMode ? (
             <p className="leading-[188%] text-gray-400 lg:text-lg">
-              {state?.user?.bio}
+              {bio?.length > 0 ? bio : "no bio here"}
             </p>
           ) : (
             <textarea
@@ -55,12 +54,18 @@ const Bio = () => {
         {/* <!-- Edit Bio button. The Above bio will be editable when clicking on the button --> */}
 
         {!editMode ? (
-          <button className="flex-center h-7 w-7 rounded-full">
-            <img src={EditIcon} alt="Edit" onClick={(e) => setEditMode(true)} />
+          <button
+            onClick={() => setEditMode(true)}
+            className="flex-center h-7 w-7 rounded-full"
+          >
+            <img src={EditIcon} alt="Edit" />
           </button>
         ) : (
-          <button className="flex-center h-7 w-7 rounded-full">
-            <img src={CheckIcon} alt="check" onClick={handleBioEdit} />
+          <button
+            onClick={handleBioEdit}
+            className="flex-center h-7 w-7 rounded-full"
+          >
+            <img src={CheckIcon} alt="check" />
           </button>
         )}
       </div>
