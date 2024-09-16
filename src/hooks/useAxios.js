@@ -14,7 +14,7 @@ const useAxios = () => {
       (config) => {
         const authToken = auth?.authToken;
         if (authToken) {
-          config.headers.Authorization = `Bearer $ {authToken}`;
+          config.headers.Authorization = `Bearer ${authToken}`;
         }
         return config;
       },
@@ -32,9 +32,11 @@ const useAxios = () => {
             const response = await customFetch.post(`/auth/refresh-token`, {
               refreshToken,
             });
+
             const { token } = response.data;
             console.log(`new token:${token}`);
             setAuth({ ...auth, authToken: token });
+
             originalRequest.headers.Authorization = `Bearer $ {token}`;
             return axios(originalRequest);
           } catch (error) {
