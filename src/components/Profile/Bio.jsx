@@ -7,7 +7,7 @@ import { actions } from "../../actions";
 
 const Bio = () => {
   const { state, dispatch } = useProfile();
-  const [bio, setBioText] = useState(state?.user?.bio);
+  const [bio, setBioText] = useState(state?.user?.bio || "No bio available");
   const [editMode, setEditMode] = useState(false);
 
   const { customFetch } = useAxios();
@@ -15,12 +15,12 @@ const Bio = () => {
   const handleBioEdit = async () => {
     dispatch({ type: actions.profile.DATA_FETCHING });
     try {
-      const response = await customFetch.patch(`/profile/`, { bio: bio });
+      const response = await customFetch.patch(`/profile/`, { bio });
       // `${BASE_URL}/profile/${auth?.user?.id}
 
       if (response.status === 200) {
         dispatch({
-          type: actions?.profile.USER_DATA_EDITED,
+          type: actions?.profile?.USER_DATA_EDITED,
           data: response?.data?.user,
         });
       }
@@ -34,42 +34,43 @@ const Bio = () => {
   };
 
   return (
-    <>
-      <div className="mt-4 flex items-start gap-2 lg:mt-6">
-        <div className="flex-1">
-          {!editMode ? (
-            <p className="leading-[188%] text-gray-400 lg:text-lg">
-              {bio?.length > 0 ? bio : "no bio here"}
-            </p>
-          ) : (
-            <textarea
-              className="text-black"
-              value={bio}
-              rows={4}
-              cols={55}
-              onChange={(e) => setBioText(e.target.value)}
-            />
-          )}
-        </div>
-        {/* <!-- Edit Bio button. The Above bio will be editable when clicking on the button --> */}
-
+    <div className="mt-4 flex items-start gap-2 lg:mt-6">
+      <div className="flex-1">
         {!editMode ? (
-          <button
-            onClick={() => setEditMode(true)}
-            className="flex-center h-7 w-7 rounded-full"
-          >
-            <img src={EditIcon} alt="Edit" />
-          </button>
+          <p className="leading-[188%] text-gray-400 lg:text-lg">
+            {/* {state?.user?.bio} */}
+            {/* {bio?.length > 0 ? bio : "No bio available"} */}
+
+            {bio}
+          </p>
         ) : (
-          <button
-            onClick={handleBioEdit}
-            className="flex-center h-7 w-7 rounded-full"
-          >
-            <img src={CheckIcon} alt="check" />
-          </button>
+          <textarea
+            className="p-2 leading=[188%] text-gray-600 lg:text-lg rounded-mdm overflow-hidden"
+            value={bio}
+            rows={4}
+            cols={55}
+            onChange={(e) => setBioText(e?.target?.value)}
+          />
         )}
       </div>
-    </>
+      {/* <!-- Edit Bio button. The Above bio will be editable when clicking on the button --> */}
+
+      {!editMode ? (
+        <button
+          onClick={() => setEditMode(true)}
+          className="flex-center h-7 w-7 rounded-full"
+        >
+          <img src={EditIcon} alt="Edit" />
+        </button>
+      ) : (
+        <button
+          onClick={handleBioEdit}
+          className="flex-center h-7 w-7 rounded-full"
+        >
+          <img src={CheckIcon} alt="check" />
+        </button>
+      )}
+    </div>
   );
 };
 

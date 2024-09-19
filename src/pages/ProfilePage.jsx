@@ -18,8 +18,6 @@ const ProfilePage = () => {
 
   // const [error, setError] = useState(null);
 
-  console.log(state);
-
   useEffect(() => {
     dispatch({ type: actions.profile.DATA_FETCHING });
     const fetchProfile = async () => {
@@ -27,7 +25,6 @@ const ProfilePage = () => {
         const response = await customFetch.get(
           `${BASE_URL}/profile/${auth?.user?.id}`
         );
-        console.log(response);
 
         if (response.status === 200) {
           dispatch({ type: actions.profile.DATA_FETCHED, data: response.data });
@@ -36,7 +33,6 @@ const ProfilePage = () => {
         // setUser(response?.user?.id);
         // setBlogs(response?.data?.blogs);
       } catch (error) {
-        console.log(error);
         // setError(error);
         dispatch({
           type: actions.profile.DATA_FETCH_ERROR,

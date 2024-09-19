@@ -39,6 +39,7 @@ const profileReducer = (state, action) => {
         user: {
           ...state.user,
           ...action.data,
+          // bio: action.data.bio,
         },
       };
     }

@@ -21,7 +21,6 @@ const Header = () => {
 
       <div className="container flex flex-col items-center justify-between gap-6 sm:flex-row ">
         {" "}
-        {console.log(user)}
         <div>
           <Link to="/">
             <img className="w-10" src={Ps} alt="lws" />

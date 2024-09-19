@@ -29,7 +29,6 @@ const LoginForm = () => {
           const authToken = token.accessToken;
           const refreshToken = token.refreshToken;
 
-          console.log(`login auth token : ${authToken}`);
           setAuth({ user, authToken, refreshToken });
           navigate("/");
         }

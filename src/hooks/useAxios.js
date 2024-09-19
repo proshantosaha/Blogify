@@ -37,7 +37,7 @@ const useAxios = () => {
             console.log(`new token:${token}`);
             setAuth({ ...auth, authToken: token });
 
-            originalRequest.headers.Authorization = `Bearer $ {token}`;
+            originalRequest.headers.Authorization = `Bearer ${token}`;
             return axios(originalRequest);
           } catch (error) {
             throw error;
