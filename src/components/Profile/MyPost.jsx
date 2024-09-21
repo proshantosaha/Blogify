@@ -8,11 +8,6 @@ import { useAuth } from "../../hooks/useAuth";
 const MyPost = () => {
   const { auth } = useAuth();
   const { state, dispatch } = useProfile();
-  // const { userId } = useParams();
-
-  const user = state?.user ?? auth?.user;
-
-  // const blogs = state?.blogs;
 
   const { userId } = useParams();
 
@@ -21,12 +16,12 @@ const MyPost = () => {
   const { firstName, lastName, blogs } = data || {};
   const fullName = `${firstName} ${lastName}`;
 
-  console.log(user);
+  // console.log(user);
 
   return (
     <>
       <h4 className="mt-6 text-xl lg:mt-8 lg:text-2xl">
-        {user?.id === userId ? `${fullName}'s` : "My"} Blogs
+        {auth?.user?.id === userId ? `${fullName}'s` : "My"} Blogs
       </h4>
       <div className="my-6 space-y-4">
         {/* <!-- Blog Card Start --> */}

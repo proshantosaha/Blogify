@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import customFetch from "../utils/customFetch";
 import { useAuth } from "./useAuth";
 import axios from "axios";
+import { api } from "../api/api";
 
 const useAxios = () => {
   const { auth, setAuth } = useAuth();
@@ -10,7 +11,7 @@ const useAxios = () => {
   useEffect(() => {
     // add a request intercepter
 
-    const requestIntercept = customFetch.interceptors.request.use(
+    const requestIntercept = api.interceptors.request.use(
       (config) => {
         const authToken = auth?.authToken;
         if (authToken) {
@@ -21,15 +22,19 @@ const useAxios = () => {
       (error) => Promise.reject(error)
     );
 
-    const responseIntercept = customFetch.interceptors.response.use(
-      (response) => response,
+    const responseIntercept = api.interceptors.response.use(
+      (response) => {
+        console.log(response);
+
+        return response;
+      },
       async (error) => {
         const originalRequest = error.config;
         if (error.response.status === 401 && !originalRequest._retry) {
           originalRequest._retry = true;
           try {
             // const refreshToken = auth?.refreshToken;
-            const response = await customFetch.post(`/auth/refresh-token`, {
+            const response = await api.post(`/auth/refresh-token`, {
               refreshToken,
             });
 
@@ -47,12 +52,12 @@ const useAxios = () => {
       }
     );
     return () => {
-      customFetch.interceptors.request.eject(requestIntercept);
-      customFetch.interceptors.response.eject(responseIntercept);
+      api.interceptors.request.eject(requestIntercept);
+      api.interceptors.response.eject(responseIntercept);
     };
     // add a response intercepter
   }, [auth.authToken]);
-  return { customFetch };
+  return { api };
 };
 
 export default useAxios;

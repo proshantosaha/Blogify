@@ -51,9 +51,29 @@
       "email": "salahuddin@learnwithsumit.com",
       "firstName": "Saad",
       "lastName": "Hasan",
-      "avatar": "avatar-1726833507226-342721317.jpg",
+      "avatar": "avatar-1726884317548-304800828.jpg",
       "bio": "rfdddttt",
       "password": "$2b$08$At/U5W1/ASt/F3zWCqOZnO75ftNVjwR.RVf0FEhEdQ0nHkll5tJ4m",
+      "favourites": []
+    },
+    {
+      "id": "b4969d20de1e6061d010",
+      "email": "atapas@email.com",
+      "firstName": "Tapas",
+      "lastName": "Adhikary",
+      "avatar": null,
+      "bio": "",
+      "password": "$2b$08$GzlsxGQl2u5HUO7C4nLpBOdSH2vlCTdP/U58OZ62MbDFu0Hs7y4ia",
+      "favourites": []
+    },
+    {
+      "id": "bf5ac6eb615d79b2a36e",
+      "email": "peo@gmail.com",
+      "firstName": "aaaa",
+      "lastName": "wwww",
+      "avatar": null,
+      "bio": "",
+      "password": "$2b$08$H27u04zdsz8BVLGt4m0eZesxOGIV8Ah8ooyJzujTu.pqZg.qH/ECa",
       "favourites": []
     }
   ],

@@ -3,11 +3,11 @@ import EditIcon from "../../assets/icons/edit.svg";
 import { useProfile } from "../../hooks/useProfile";
 import useAxios from "../../hooks/useAxios";
 import { actions } from "../../actions";
-import customFetch from "../../utils/customFetch";
+// import customFetch from "../../utils/customFetch";
 
 const ProfileImage = () => {
   const { state, dispatch } = useProfile();
-  const { customFetch } = useAxios();
+  const { api } = useAxios();
   const fileUploadRef = useRef();
 
   const handleImageUpload = (e) => {
@@ -23,7 +23,7 @@ const ProfileImage = () => {
       for (const file of fileUploadRef.current.files) {
         formData.append("avatar", file);
       }
-      const response = await customFetch.post(`/profile/avatar`, formData);
+      const response = await api.post(`/profile/avatar`, formData);
       if (response.status === 200) {
         dispatch({
           type: actions.profile.IMAGE_UPDATED,

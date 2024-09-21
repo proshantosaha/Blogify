@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import Filed from "../common/Filed";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import axios from "axios";
 import { BASE_URL } from "../../constant";
@@ -50,7 +50,7 @@ const LoginForm = () => {
         <Filed label="Email" error={errors.email}>
           <input
             {...register("email", { required: "Email Id is Required" })}
-            className={` w-full p-3 bg-[#fff] border  rounded-md focus:outline-none focus:border-indigo-500 ${
+            className={` w-full p-3 bg-[#fff] text-black border  rounded-md focus:outline-none focus:border-indigo-500 ${
               !!errors.email ? "border-red-500" : "border-white/20"
             }`}
             type="email"
@@ -73,7 +73,7 @@ const LoginForm = () => {
             type="password"
             id="password"
             name="password"
-            className={` w-full p-3 bg-[#fff] border  rounded-md focus:outline-none focus:border-indigo-500 ${
+            className={` w-full p-3 bg-[#fff] border text-black rounded-md focus:outline-none focus:border-indigo-500 ${
               !!errors.password ? "border-red-500" : "border-white/20"
             }`}
             // className=" w-full p-3 bg-[#030317] border border-white/20 rounded-md focus:outline-none focus:border-indigo-500"
@@ -95,9 +95,9 @@ const LoginForm = () => {
 
       <p className="text-center text-white">
         Don't have an account?{" "}
-        <a href="./register.html" className="text-indigo-600 hover:underline">
+        <Link to="/register" className="text-indigo-600 hover:underline">
           Register
-        </a>
+        </Link>
       </p>
     </form>
   );

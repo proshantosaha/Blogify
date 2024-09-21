@@ -10,12 +10,12 @@ const Bio = () => {
   const [bio, setBioText] = useState(state?.user?.bio || "No bio available");
   const [editMode, setEditMode] = useState(false);
 
-  const { customFetch } = useAxios();
+  const { api } = useAxios();
 
   const handleBioEdit = async () => {
     dispatch({ type: actions.profile.DATA_FETCHING });
     try {
-      const response = await customFetch.patch(`/profile/`, { bio });
+      const response = await api.patch(`/profile/`, { bio });
       // `${BASE_URL}/profile/${auth?.user?.id}
 
       if (response.status === 200) {
