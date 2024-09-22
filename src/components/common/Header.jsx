@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Ps from "../../assets/ps.webp";
 import SearchIcons from "../../assets/icons/search.svg";
 // import Avatar from "../../assets/avatar.png";
@@ -10,9 +10,7 @@ import { BASE_URL } from "../../constant";
 
 const Header = () => {
   const { auth } = useAuth();
-
   const { state } = useProfile();
-
   const user = state?.user ?? auth?.user;
 
   return (
@@ -34,7 +32,7 @@ const Header = () => {
           <ul className="flex items-center space-x-5">
             <li>
               <Link
-                to=""
+                to="/create-blog"
                 className="bg-indigo-600 text-white px-6 py-2 md:py-3 rounded-md hover:bg-indigo-700 transition-all duration-200"
               >
                 Write

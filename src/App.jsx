@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import PrivateRoutes from "./routes/PrivateRoutes";
+import CreateBlog from "./components/blogs/CreateBlog";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route element={<PrivateRoutes />}>
           <Route element={<HomePage />} path="/" exact />
           <Route element={<ProfilePage />} path="/me" />
+          <Route element={<CreateBlog />} path="/create-blog" />
         </Route>
 
         <Route element={<LoginPage />} path="/login" />

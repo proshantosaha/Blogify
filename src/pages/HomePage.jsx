@@ -11,6 +11,7 @@ import { data } from "autoprefixer";
 import { BASE_URL } from "../constant";
 import SidebarCard from "../components/sidebar/SidebarCard";
 import { usePost } from "../hooks/usePost";
+import CreateBlog from "../components/blogs/CreateBlog";
 
 const HomePage = () => {
   // const { auth } = useAuth();
@@ -52,39 +53,41 @@ const HomePage = () => {
   const blogs = state?.blogs;
 
   return (
-    <div className="container">
-      <div className="grid grid-cols-1 md:grid-cols-7 gap-4">
-        {/* <!-- Blog Contents --> */}
-        <div className="space-y-3 md:col-span-5">
-          {/* <!-- Blog Card Start --> */}
+    <section>
+      <div className="container">
+        <div className="grid grid-cols-1 md:grid-cols-7 gap-4">
+          {/* <!-- Blog Contents --> */}
+          <div className="space-y-3 md:col-span-5">
+            {/* <!-- Blog Card Start --> */}
 
-          {
-            // Profile's blogs
+            {
+              // Profile's blogs
 
-            blogs?.map((blog) => {
-              return (
-                <BlogCard
-                  id={blog.id}
-                  title={blog.title}
-                  content={blog.content}
-                  image={blog.thumbnail}
-                  author={blog.author} // avatar={avatar}
-                  thumbnail={blog.thumbnail}
-                  createdAt={blog.createdAt}
-                  // likes={blog.likes?.length}
-                />
-              );
-            })
-          }
-          {/* <!-- Blog Card End --> */}
-        </div>
+              blogs?.map((blog) => {
+                return (
+                  <BlogCard
+                    id={blog.id}
+                    title={blog.title}
+                    content={blog.content}
+                    image={blog.thumbnail}
+                    author={blog.author} // avatar={avatar}
+                    thumbnail={blog.thumbnail}
+                    createdAt={blog.createdAt}
+                    // likes={blog.likes?.length}
+                  />
+                );
+              })
+            }
+            {/* <!-- Blog Card End --> */}
+          </div>
 
-        {/* <!-- Sidebar --> */}
-        <div className="md:col-span-2 h-full w-full space-y-5">
-          <SidebarCard />
+          {/* <!-- Sidebar --> */}
+          <div className="md:col-span-2 h-full w-full space-y-5">
+            <SidebarCard />
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

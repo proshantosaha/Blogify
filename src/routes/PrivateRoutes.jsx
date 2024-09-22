@@ -15,12 +15,11 @@ const PrivateRoutes = () => {
           <PostProvider>
             <ProfileProvider>
               <Header />
-              <main className="mx-auto max-w-[1020px] py-8">
-                <div className="container">
-                  <Outlet />
-                </div>
-                <Footer />
-              </main>
+
+              <div className="container">
+                <Outlet />
+              </div>
+              <Footer />
             </ProfileProvider>
           </PostProvider>
         </>
