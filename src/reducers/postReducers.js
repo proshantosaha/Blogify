@@ -26,6 +26,12 @@ const postReducers = (state, action) => {
         loading: false,
         error: action.error,
       };
+    case actions.post.DATA_CREATED:
+      return {
+        ...state,
+        loading: false,
+        blogs: [...state.blogs, action.data],
+      };
     default: {
       return state;
     }

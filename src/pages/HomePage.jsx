@@ -10,11 +10,12 @@ import { actions } from "../actions";
 import { data } from "autoprefixer";
 import { BASE_URL } from "../constant";
 import SidebarCard from "../components/sidebar/SidebarCard";
+import { usePost } from "../hooks/usePost";
 
 const HomePage = () => {
   // const { auth } = useAuth();
   // const { state, dispatch } = useProfile();
-  const [state, dispatch] = useReducer(postReducers, initialState);
+  const { state, dispatch } = usePost();
   const { api } = useAxios();
 
   useEffect(() => {
