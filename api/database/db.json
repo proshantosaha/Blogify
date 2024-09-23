@@ -51,7 +51,7 @@
       "email": "salahuddin@learnwithsumit.com",
       "firstName": "Saad",
       "lastName": "Hasan",
-      "avatar": "avatar-1726884317548-304800828.jpg",
+      "avatar": "avatar-1727025465068-211624904.jpg",
       "bio": "rfdddttt",
       "password": "$2b$08$At/U5W1/ASt/F3zWCqOZnO75ftNVjwR.RVf0FEhEdQ0nHkll5tJ4m",
       "favourites": []
@@ -133,7 +133,8 @@
           }
         }
       ],
-      "createdAt": "2024-02-24T09:09:01.121Z"
+      "createdAt": "2024-02-24T09:09:01.121Z",
+      "isFavourite": false
     },
     {
       "id": "4321b782f360f58c8c85",
@@ -325,6 +326,70 @@
       "likes": [],
       "comments": [],
       "createdAt": "2024-02-24T17:06:43.629Z"
+    },
+    {
+      "id": "24b5d99af40fbc4527d7",
+      "title": "Node.js back-end debugging process",
+      "content": "Node.js Debugging Tools\nNode.js provides a range of debugging tools and techniques to debug back-end applications. Here are some of the popular ones:\n\n1. Console.log()\nConsole.log() is one of the most basic and widely used debugging techniques in Node.js. It is a simple function that logs messages to the console, which can be used to trace the execution flow and identify bugs. For example:\n\n2. Debugger Statement\nDebugger statement is a built-in Node.js debugger that stops the execution of code at a specific point and allows you to inspect variables, call stack, and execute code line by line. For example:3. Node.js Debug Module\nThe Node.js debug module is a powerful tool that provides a range of debugging options, including:\n\nBreakpoints\nConditional breakpoints\nWatch expressions\nStepping over, into, and out of functions\nHere is an example of how to use the debug module:\n\n3. Node.js Debug Module\nThe Node.js debug module is a powerful tool that provides a range of debugging options, including:\n\nBreakpoints\nConditional breakpoints\nWatch expressions\nStepping over, into, and out of functions\nHere is an example of how to use the debug module:\n\n",
+      "thumbnail": null,
+      "author": {
+        "id": "65aff389f1822a5e9f43",
+        "firstName": "Saad",
+        "lastName": "Hasan",
+        "avatar": "avatar-1726884317548-304800828.jpg"
+      },
+      "tags": "programming, algorithm, prototype, javascript",
+      "likes": [],
+      "comments": [],
+      "createdAt": "2024-09-22T14:17:15.160Z"
+    },
+    {
+      "id": "7d5588ba4080885bdb58",
+      "title": "ytyt",
+      "content": "gh",
+      "thumbnail": null,
+      "author": {
+        "id": "65aff389f1822a5e9f43",
+        "firstName": "Saad",
+        "lastName": "Hasan",
+        "avatar": "avatar-1727025465068-211624904.jpg"
+      },
+      "tags": "yh",
+      "likes": [],
+      "comments": [],
+      "createdAt": "2024-09-22T17:18:43.676Z"
+    },
+    {
+      "id": "cb2e5834bf2776d0d0d4",
+      "title": "ass",
+      "content": "xxx",
+      "thumbnail": null,
+      "author": {
+        "id": "65aff389f1822a5e9f43",
+        "firstName": "Saad",
+        "lastName": "Hasan",
+        "avatar": "avatar-1727025465068-211624904.jpg"
+      },
+      "tags": "xxx",
+      "likes": [],
+      "comments": [],
+      "createdAt": "2024-09-22T17:21:39.010Z"
+    },
+    {
+      "id": "4ffea7118a38ba983aaa",
+      "title": "rrere",
+      "content": "rrr",
+      "thumbnail": null,
+      "author": {
+        "id": "65aff389f1822a5e9f43",
+        "firstName": "Saad",
+        "lastName": "Hasan",
+        "avatar": "avatar-1727025465068-211624904.jpg"
+      },
+      "tags": "rrrr",
+      "likes": [],
+      "comments": [],
+      "createdAt": "2024-09-22T17:24:51.562Z"
     }
   ]
 }

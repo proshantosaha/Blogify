@@ -67,12 +67,15 @@ const HomePage = () => {
                 return (
                   <BlogCard
                     id={blog.id}
+                    key={blog.id}
                     title={blog.title}
                     content={blog.content}
                     image={blog.thumbnail}
                     author={blog.author} // avatar={avatar}
                     thumbnail={blog.thumbnail}
                     createdAt={blog.createdAt}
+                    authorId={blog.author?.id}
+
                     // likes={blog.likes?.length}
                   />
                 );

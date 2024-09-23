@@ -1,12 +1,57 @@
-import React from "react";
+import useAxios from "../../hooks/useAxios";
+import { useAuth } from "../../hooks/useAuth";
+import { usePost } from "../../hooks/usePost";
+import { useProfile } from "../../hooks/useProfile";
+import { useForm } from "react-hook-form";
+import Filed from "../common/Filed";
+import { actions } from "../../actions";
+import { Link } from "react-router-dom";
 
-const CreateBlog = () => {
+const CreateBlog = ({ onCreate }) => {
+  const { auth } = useAuth();
+  const { dispatch } = usePost();
+  const { api } = useAxios();
+  const { state: profile } = useProfile();
+
+  const user = profile?.user ?? auth?.user;
+
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors },
+  } = useForm();
+
+  const handlePostSubmit = async (formData) => {
+    console.log(formData);
+    dispatch({ type: actions.post.DATA_CREATED });
+    try {
+      const response = await api.post(`/blogs/`, formData);
+      if (response.status === 200) {
+        dispatch({
+          type: actions.post.DATA_CREATED,
+          data: response.data,
+        });
+      }
+    } catch (error) {
+      dispatch({
+        type: actions.profile.DATA_FETCH_ERROR,
+        error: error.message,
+      });
+    }
+  };
+
   return (
     <main>
       <section>
         <div className="container">
           {/* <!-- Form Input field for creating Blog Post --> */}
-          <form action="#" method="POST" className="createBlog">
+          <form
+            action="#"
+            method="POST"
+            className="createBlog"
+            onSubmit={handleSubmit(handlePostSubmit)}
+          >
             <div className="grid place-items-center bg-slate-600/20 h-[150px] rounded-md my-4">
               <div className="flex items-center gap-4 hover:scale-110 transition-all cursor-pointer">
                 <svg
@@ -26,39 +71,53 @@ const CreateBlog = () => {
                 <p>Upload Your Image</p>
               </div>
             </div>
+
             <div className="mb-6">
-              <input
-                type="text"
-                id="title"
-                name="title"
-                placeholder="Enter your blog title"
-              />
+              <Filed label="title" error={errors.title}>
+                <input
+                  {...register("title", {
+                    required: "Title  is Required",
+                  })}
+                  type="text"
+                  name="title"
+                  id="title"
+                  placeholder="Enter your blog title"
+                />
+              </Filed>
             </div>
 
             <div className="mb-6">
-              <input
-                type="text"
-                id="tags"
-                name="tags"
-                placeholder="Your Comma Separated Tags Ex. JavaScript, React, Node, Express,"
-              />
+              <Filed label="title" error={errors.tags}>
+                <input
+                  {...register("tags", {
+                    required: "Tags  is Required",
+                  })}
+                  type="text"
+                  name="tags"
+                  id="tags"
+                  placeholder="Enter your blog title"
+                />
+              </Filed>
             </div>
 
             <div className="mb-6">
               <textarea
+                {...register("content", {
+                  required: "Blog Content is required",
+                })}
                 id="content"
                 name="content"
                 placeholder="Write your blog content"
-                rows="8"
+                rows={8}
               ></textarea>
             </div>
 
-            <a
-              href="./createBlog.html"
+            <button
+              type="submit"
               className="bg-indigo-600 text-white px-6 py-2 md:py-3 rounded-md hover:bg-indigo-700 transition-all duration-200"
             >
               Create Blog
-            </a>
+            </button>
           </form>
         </div>
       </section>

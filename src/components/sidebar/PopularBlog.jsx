@@ -20,7 +20,7 @@ const PopularBlog = () => {
           likes,
           content,
         }) => (
-          <>
+          <div id={id}>
             {" "}
             <h3 className="text-slate-300 text-xl lg:text-2xl font-semibold">
               {title}
@@ -40,7 +40,7 @@ const PopularBlog = () => {
                 </p>
               </li>
 
-              <li>
+              <li id={authorId}>
                 <h3 className="text-slate-400 font-medium hover:text-slate-300 transition-all cursor-pointer">
                   How to Auto Deploy a Next.js App on Ubuntu from GitHub
                 </h3>
@@ -73,7 +73,7 @@ const PopularBlog = () => {
                 </p>
               </li>
             </ul>
-          </>
+          </div>
         )
       )}
     </>

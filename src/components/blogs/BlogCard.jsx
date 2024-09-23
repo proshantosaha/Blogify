@@ -1,5 +1,6 @@
 import React from "react";
 import { BASE_URL } from "../../constant";
+import { useNavigate } from "react-router-dom";
 
 const BlogCard = ({
   id,
@@ -11,9 +12,16 @@ const BlogCard = ({
   likes,
 }) => {
   const fullname = `${firstName} ${lastName}`;
+  const navigate = useNavigate();
 
   return (
-    <div className="blog-card">
+    <div
+      className="blog-card"
+      onClick={(e) => {
+        e.preventDefault();
+        navigate(`/blog/${id}`);
+      }}
+    >
       <img
         className="blog-thumb"
         s

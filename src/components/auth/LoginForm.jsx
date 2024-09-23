@@ -7,6 +7,7 @@ import axios from "axios";
 import { BASE_URL } from "../../constant";
 // import useAxios from "../../hooks/useAxios";
 import customFetch from "../../utils/customFetch";
+import { api } from "../../api/api";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const LoginForm = () => {
 
   const submitForm = async (formData) => {
     try {
-      const response = await customFetch.post(`/auth/login`, formData);
+      const response = await api.post(`/auth/login`, formData);
 
       if (response.status === 200) {
         const { token, user } = response.data;
