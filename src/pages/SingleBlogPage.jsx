@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { useSingleBlog } from "../hooks/useSingleBlog";
+import { BASE_URL } from "../constant";
 
 const SingleBlogPage = () => {
   const { id } = useParams();
@@ -39,30 +40,26 @@ const SingleBlogPage = () => {
           <div className="container text-center py-8">
             <h1 className="font-bold text-3xl md:text-5xl">{title}</h1>
             <div className="flex justify-center items-center my-4 gap-4">
-              <Link>
-                <div className="flex items-center capitalize space-x-2">
-                  <div className="avater-img bg-indigo-600 text-white">
-                    <span className="">S</span>
-                  </div>
-
-                  <h5 className="text-slate-500 text-sm">{fullName}</h5>
+              <div className="flex items-center capitalize space-x-2">
+                <div className="avater-img bg-indigo-600 text-white">
+                  <span className="">{firstName ? firstName[0] : "A"}</span>
                 </div>
-              </Link>
-              <span className="text-sm text-slate-700 dot">June 28, 2018</span>
-              <span className="text-sm text-slate-700 dot">{likes}</span>
+                <h5 className="text-slate-500 text-sm">{fullName}</h5>
+              </div>
+              <span className="text-sm text-slate-700 dot">{}</span>
+              <span className="text-sm text-slate-700 dot">{likes.length}</span>
             </div>
             <img
               className="mx-auto w-full md:w-8/12 object-cover h-80 md:h-96"
-              src="./assets/blogs/React-Roadmap.jpg"
+              src={`${BASE_URL}/uploads/blog/${thumbnail}`}
               alt=""
             />
 
             {/* <!-- Tags --> */}
             <ul className="tags">
-              <li>JavaScript</li>
-              <li>Node</li>
-              <li>React</li>
-              <li>Next</li>
+              {tags?.split(",").map((tag, index) => (
+                <li key={index}>{tag}</li>
+              ))}
             </ul>
 
             {/* <!-- Content --> */}
@@ -76,10 +73,12 @@ const SingleBlogPage = () => {
         {/* <!-- Begin Comments --> */}
         <section id="comments">
           <div className="mx-auto w-full md:w-10/12 container">
-            <h2 className="text-3xl font-bold my-8">Comments (3)</h2>
+            <h2 className="text-3xl font-bold my-8">
+              Comments ({comments.length})
+            </h2>
             <div className="flex items -center space-x-4">
               <div className="avater-img bg-indigo-600 text-white">
-                <span className="">S</span>
+                <span>{firstName ? firstName[0] : "A"}</span>
               </div>
               <div className="w-full">
                 <textarea
@@ -95,77 +94,29 @@ const SingleBlogPage = () => {
             </div>
 
             {/* <!-- Comment One --> */}
-            <div className="flex items-start space-x-4 my-8">
-              <div className="avater-img bg-orange-600 text-white">
-                <span className="">S</span>
+
+            {comments.map((comment, index) => (
+              <div className="flex items-start space-x-4 my-8" key={index}>
+                <div className="avater-img bg-orange-600 text-white">
+                  <span className="">{comment.author[0]}</span>
+                </div>
+                <div className="w-full">
+                  {/* <h5 className="text-slate-500 font-bold">
+                    {comment?.author}
+                  </h5> */}
+                  <p className="text-slate-300">{comment.text}</p>
+                </div>
               </div>
-              <div className="w-full">
-                <h5 className="text-slate -500 font-bold">Saad Hasan</h5>
-                <p className="text-slate-300">
-                  Today I was mob programming with Square's Mobile & Performance
-                  Reliability team and we toyed with an interesting idea. Our
-                  codebase has classNamees that represent screens a user can
-                  navigate to. These classNamees are defined in modules, and
-                  these modules have an owner team defined. When navigating to a
-                  screen, we wanted to have the owner team information
-                  available, at runtime. We created a build tool that looks at
-                  about 1000 Screen classNamees, determines the owner team, and
-                  generates a className to do the lookup at runtime. The
-                  generated code looked like this:
-                </p>
-              </div>
-            </div>
+            ))}
 
             {/* <!-- Comment Two --> */}
-            <div className="flex items-start space-x-4 my-8">
-              <div className="avater-img bg-green-600 text-white">
-                <span className="">S</span>
-              </div>
-              <div className="w-full">
-                <h5 className="text-slate -500 font-bold">Saad Hasan</h5>
-                <p className="text-slate-300">
-                  Today I was mob programming with Square's Mobile & Performance
-                  Reliability team and we toyed with an interesting idea. Our
-                  codebase has classNamees that represent screens a user can
-                  navigate to. These classNamees are defined in modules, and
-                  these modules have an owner team defined. When navigating to a
-                  screen, we wanted to have the owner team information
-                  available, at runtime. We created a build tool that looks at
-                  about 1000 Screen classNamees, determines the owner team, and
-                  generates a className to do the lookup at runtime. The
-                  generated code looked like this:
-                </p>
-              </div>
-            </div>
-
-            {/* <!-- Comment Three --> */}
-            <div className="flex items-start space-x-4 my-8">
-              <div className="avater-img bg-indigo-600 text-white">
-                <span className="">S</span>
-              </div>
-              <div className="w-full">
-                <h5 className="text-slate -500 font-bold">Saad Hasan</h5>
-                <p className="text-slate-300">
-                  Today I was mob programming with Square's Mobile & Performance
-                  Reliability team and we toyed with an interesting idea. Our
-                  codebase has classNamees that represent screens a user can
-                  navigate to. These classNamees are defined in modules, and
-                  these modules have an owner team defined. When navigating to a
-                  screen, we wanted to have the owner team information
-                  available, at runtime. We created a build tool that looks at
-                  about 1000 Screen classNamees, determines the owner team, and
-                  generates a className to do the lookup at runtime. The
-                  generated code looked like this:
-                </p>
-              </div>
-            </div>
           </div>
         </section>
       </main>
       {/* <!-- End main --> */}
       {/* <!-- Floating Actions--> */}
-      <div className="floating-action">
-        <ul className="floating-action-menus">
+      <div classNameName="floating-action">
+        <ul classNameName="floating-action-menus">
           <li>
             <img src="./assets/icons/like.svg" alt="like" />
             <span>10</span>

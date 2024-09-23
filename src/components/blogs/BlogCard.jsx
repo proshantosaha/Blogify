@@ -19,7 +19,7 @@ const BlogCard = ({
       className="blog-card"
       onClick={(e) => {
         e.preventDefault();
-        navigate(`/blog/${id}`);
+        navigate(`/blogs/${id}`);
       }}
     >
       <img

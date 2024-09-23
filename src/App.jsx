@@ -18,8 +18,8 @@ const App = () => {
         <Route element={<PrivateRoutes />}>
           <Route element={<HomePage />} path="/" exact />
           <Route element={<ProfilePage />} path="/me" />
-          {/* <Route element={<CreateBlog />} path="/blog/:id" /> */}
-          <Route element={<SingleBlogPage />} path="/blog/:id" />
+          <Route element={<CreateBlog />} path="/create-blog" />
+          <Route element={<SingleBlogPage />} path="/blogs/:id" />
         </Route>
 
         <Route element={<LoginPage />} path="/login" />
