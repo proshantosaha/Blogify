@@ -5,13 +5,18 @@ import { useProfile } from "../../hooks/useProfile";
 import { useForm } from "react-hook-form";
 import Filed from "../common/Filed";
 import { actions } from "../../actions";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { useRef } from "react";
+import { useEffect } from "react";
 
 const CreateBlog = ({ onCreate }) => {
   const { auth } = useAuth();
   const { dispatch } = usePost();
   const { api } = useAxios();
   const { state: profile } = useProfile();
+  const fileUploadRef = useRef();
 
   const user = profile?.user ?? auth?.user;
 
@@ -22,23 +27,61 @@ const CreateBlog = ({ onCreate }) => {
     formState: { errors },
   } = useForm();
 
-  const handlePostSubmit = async (formData) => {
-    console.log(formData);
-    dispatch({ type: actions.post.DATA_CREATED });
-    try {
-      const response = await api.post(`/blogs/`, formData);
-      if (response.status === 200) {
-        dispatch({
-          type: actions.post.DATA_CREATED,
-          data: response.data,
-        });
-      }
-    } catch (error) {
-      dispatch({
-        type: actions.profile.DATA_FETCH_ERROR,
-        error: error.message,
-      });
+  const [statImage, setStateImage] = useState();
+  const [preview, setPreview] = useState();
+  const navigate = useNavigate();
+
+  const mutation = useMutation({
+    mutationFn: async (blog) => api.post("/blogs/", blog),
+    onSuccess: (data) => {
+      // On success, navigate to the created blog post
+      navigate(`/blogs/${data.data.blog.id}`);
+    },
+    onError: (error) => {
+      setError("apiError", { message: error.message });
+    },
+  });
+
+  const hanleUploadImage = (e) => {
+    e.preventDefault();
+    fileUploadRef.current.addEventListener("change", addImageUpload);
+    fileUploadRef.current.click();
+  };
+
+  const addImageUpload = (e) => {
+    if (!e.target.files || e.target.files.length === 0) {
+      setStateImage(undefined);
+      return;
     }
+    console.log(e.target.files);
+    setStateImage(e.target.files[0]);
+  };
+
+  useEffect(() => {
+    if (!statImage) {
+      setPreview(undefined);
+      return;
+    }
+
+    // create url
+    const imgObjUrl = URL.createObjectURL(statImage);
+
+    setPreview(imgObjUrl);
+
+    // cleanup
+    return () => URL.revokeObjectURL(imgObjUrl);
+  }, [statImage]);
+
+  const handlePostSubmit = async (data) => {
+    console.log(data);
+    const formData = new FormData();
+
+    formData.append("title", data.title);
+    formData.append("tags", data.tags);
+    formData.append("content", data.content);
+    formData.append("thumbnail", statImage);
+
+    mutation.mutate(formData);
   };
 
   return (
@@ -53,7 +96,11 @@ const CreateBlog = ({ onCreate }) => {
             onSubmit={handleSubmit(handlePostSubmit)}
           >
             <div className="grid place-items-center bg-slate-600/20 h-[150px] rounded-md my-4">
-              <div className="flex items-center gap-4 hover:scale-110 transition-all cursor-pointer">
+              <button
+                onClick={hanleUploadImage}
+                htmlFor="fileInput"
+                className="flex items-center gap-4 hover:scale-110 transition-all cursor-pointer"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -69,7 +116,19 @@ const CreateBlog = ({ onCreate }) => {
                   />
                 </svg>
                 <p>Upload Your Image</p>
-              </div>
+                {statImage && (
+                  <img className="w-20" alt="preview" src={preview} />
+                )}
+              </button>
+              <input
+                name="thumbnail"
+                accept="image/png, image/gif, image/jpeg"
+                type="file"
+                id="fileInput"
+                placeholder="Enter your blog title"
+                className="hidden"
+                ref={fileUploadRef}
+              />
             </div>
 
             <div className="mb-6">
