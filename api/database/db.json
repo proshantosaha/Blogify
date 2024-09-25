@@ -51,7 +51,7 @@
       "email": "salahuddin@learnwithsumit.com",
       "firstName": "Saad",
       "lastName": "Hasan",
-      "avatar": "avatar-1727147178743-606848805.jpg",
+      "avatar": "avatar-1727198589386-234348509.jpg",
       "bio": "rfdddttt",
       "password": "$2b$08$At/U5W1/ASt/F3zWCqOZnO75ftNVjwR.RVf0FEhEdQ0nHkll5tJ4m",
       "favourites": []
@@ -390,6 +390,86 @@
       "likes": [],
       "comments": [],
       "createdAt": "2024-09-22T17:24:51.562Z"
+    },
+    {
+      "id": "7a178cfc93667acb6aef",
+      "title": "hhhh",
+      "content": "bbbb",
+      "thumbnail": null,
+      "author": {
+        "id": "65aff389f1822a5e9f43",
+        "firstName": "Saad",
+        "lastName": "Hasan",
+        "avatar": "avatar-1727147178743-606848805.jpg"
+      },
+      "tags": "bbb",
+      "likes": [],
+      "comments": [],
+      "createdAt": "2024-09-24T13:06:56.195Z"
+    },
+    {
+      "id": "6481b9c533330c8325fd",
+      "title": "cvvc",
+      "content": "vvv",
+      "thumbnail": "undefined",
+      "author": {
+        "id": "65aff389f1822a5e9f43",
+        "firstName": "Saad",
+        "lastName": "Hasan",
+        "avatar": "avatar-1727198589386-234348509.jpg"
+      },
+      "tags": "vvvv",
+      "likes": [],
+      "comments": [],
+      "createdAt": "2024-09-25T03:38:07.110Z"
+    },
+    {
+      "id": "b555465f3d56681078dd",
+      "title": ".;lggfg",
+      "content": "gggg",
+      "thumbnail": "undefined",
+      "author": {
+        "id": "65aff389f1822a5e9f43",
+        "firstName": "Saad",
+        "lastName": "Hasan",
+        "avatar": "avatar-1727198589386-234348509.jpg"
+      },
+      "tags": ".,.,.hh",
+      "likes": [],
+      "comments": [],
+      "createdAt": "2024-09-25T03:39:09.067Z"
+    },
+    {
+      "id": "03d73c2418e93b66a4e9",
+      "title": "fgd",
+      "content": "ss",
+      "thumbnail": "thumbnail-1727235655275-521835004.jpg",
+      "author": {
+        "id": "65aff389f1822a5e9f43",
+        "firstName": "Saad",
+        "lastName": "Hasan",
+        "avatar": "avatar-1727198589386-234348509.jpg"
+      },
+      "tags": "ffff",
+      "likes": [],
+      "comments": [],
+      "createdAt": "2024-09-25T03:40:55.283Z"
+    },
+    {
+      "id": "2eb34a7cef3c4ba6409d",
+      "title": "hhhh",
+      "content": "hhh",
+      "thumbnail": "thumbnail-1727240460715-827610230.jpg",
+      "author": {
+        "id": "65aff389f1822a5e9f43",
+        "firstName": "Saad",
+        "lastName": "Hasan",
+        "avatar": "avatar-1727198589386-234348509.jpg"
+      },
+      "tags": "hhhh",
+      "likes": [],
+      "comments": [],
+      "createdAt": "2024-09-25T05:01:00.719Z"
     }
   ]
 }
