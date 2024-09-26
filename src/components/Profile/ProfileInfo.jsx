@@ -11,6 +11,12 @@ const ProfileInfo = () => {
   const { state, dispatch } = useProfile();
   // const { userId } = useParams();
 
+  console.log(state);
+
+  const blogs = state?.blogs;
+
+  console.log(blogs);
+
   const user = state?.user ?? auth?.user;
   const { firstName, lastName, email } = user;
   const fullname = `${firstName} ${lastName}`;
@@ -33,7 +39,7 @@ const ProfileInfo = () => {
         <div className="w-3/4 border-b border-[#3F3F3F] py-6 lg:py-8"></div>
       </div>
 
-      <MyPost />
+      <MyPost blogs={blogs} />
     </div>
   );
 };

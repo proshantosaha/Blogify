@@ -19,6 +19,8 @@ const HomePage = () => {
   const { state, dispatch } = usePost();
   const { api } = useAxios();
 
+  console.log(state);
+
   useEffect(() => {
     dispatch({ type: actions.post.DATA_FETCHING });
     const fetchPost = async () => {
@@ -68,6 +70,7 @@ const HomePage = () => {
                   return (
                     <BlogCard
                       id={blog.id}
+                      blog={blog}
                       key={blog.id}
                       title={blog.title}
                       content={blog.content}

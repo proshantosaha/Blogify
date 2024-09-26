@@ -2,9 +2,11 @@ import React from "react";
 import { BASE_URL } from "../../constant";
 import { useNavigate } from "react-router-dom";
 import { formatDate } from "../../utils/formatDate";
+import useAvatar from "../../hooks/useAvatar";
 
 const BlogCard = ({
   id,
+  blog,
   author: { avatar, firstName, id: authorId, lastName },
   title,
   content,
@@ -14,6 +16,9 @@ const BlogCard = ({
 }) => {
   const fullname = `${firstName} ${lastName}`;
   const navigate = useNavigate();
+  const { avatarURL } = useAvatar(blog);
+
+  console.log(avatarURL);
 
   return (
     <div
@@ -50,8 +55,8 @@ const BlogCard = ({
                 {" "}
                 {avatar ? (
                   <img
-                    src={`${BASE_URL}/uploads/avatars/${avatar}`}
-                    alt={fullname}
+                    src={avatarURL}
+                    alt="avatar"
                     className="rounded-full h-full w-full object-cover"
                   />
                 ) : (

@@ -6,17 +6,22 @@ import { useParams } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import BlogCard from "../blogs/BlogCard";
 
-const MyPost = () => {
+const MyPost = ({ blogs }) => {
   const { auth } = useAuth();
   const { state, dispatch } = useProfile();
 
   const { userId } = useParams();
 
   const { data, error, isError, isLoading } = useProfileFetch(userId);
-  const user = state?.user ?? auth?.user;
+  // const user = state?.user ?? auth?.user;
 
-  const { blogs, firstName, lastName, avatar } = user || {};
-  const fullname = `${firstName} ${lastName}`;
+  // const { blogs, firstName, lastName } = user || {};
+
+  {
+    console.log(blogs);
+  }
+
+  // const fullname = `${firstName} ${lastName}`;
 
   // if (isLoading) {
   //   return <p>Loading...</p>;
@@ -39,6 +44,7 @@ const MyPost = () => {
           blogs?.map((blog) => (
             <BlogCard
               id={blog.id}
+              blog={blog}
               key={blog.id}
               title={blog.title}
               content={blog.content}
