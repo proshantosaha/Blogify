@@ -1,6 +1,7 @@
 import React from "react";
 import { BASE_URL } from "../../constant";
 import { useNavigate } from "react-router-dom";
+import { formatDate } from "../../utils/formatDate";
 
 const BlogCard = ({
   id,
@@ -22,27 +23,47 @@ const BlogCard = ({
         navigate(`/blogs/${id}`);
       }}
     >
-      <img
-        className="blog-thumb"
-        s
-        src={`${BASE_URL}/uploads/blog/${thumbnail}`}
-        alt=""
-      />
+      {thumbnail ? (
+        <img
+          className="blog-thumb"
+          src={`${BASE_URL}/uploads/blog/${thumbnail}`}
+          alt={fullname}
+        />
+      ) : (
+        <div className="blog-thumb-placeholder bg-gray-200 h-40 flex items-center justify-center">
+          <span className="text-gray-500">No Image Available</span>
+        </div>
+      )}
+
       <div className="mt-2">
         <h3 className="text-slate-300 text-xl lg:text-2xl">{title}</h3>
-        <p className="mb-6 text-base text-slate-500 mt-1">{content}</p>
+        <p className="mb-6 text-base text-slate-500 mt-1">
+          {" "}
+          {content.length > 100 ? content.substring(0, 100) + "..." : content}
+        </p>
 
         {/* <!-- Meta Informations --> */}
         <div className="flex justify-between items-center">
           <div className="flex items-center capitalize space-x-2">
             <div className="avater-img bg-indigo-600 text-white">
-              <span className="">{avatar}</span>
+              <span className="">
+                {" "}
+                {avatar ? (
+                  <img
+                    src={`${BASE_URL}/uploads/avatars/${avatar}`}
+                    alt={fullname}
+                    className="rounded-full h-full w-full object-cover"
+                  />
+                ) : (
+                  <span>{firstName.charAt(0)}</span> // Fallback to first letter if no avatar
+                )}
+              </span>
             </div>
 
             <div>
               <h5 className="text-slate-500 text-sm">{fullname}</h5>
               <div className="flex items-center text-xs text-slate-700">
-                <span>{createdAt}</span>
+                <span>{formatDate(createdAt)}</span>
               </div>
             </div>
           </div>

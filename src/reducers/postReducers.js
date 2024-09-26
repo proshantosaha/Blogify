@@ -17,7 +17,7 @@ const postReducers = (state, action) => {
       return {
         ...state,
 
-        blogs: [...state.blogs, ...action.data.blogs],
+        blogs: action.data.blogs,
         loading: false,
       };
     case actions.post.DATA_FETCH_ERROR:

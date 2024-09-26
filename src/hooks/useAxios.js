@@ -14,6 +14,7 @@ const useAxios = () => {
     const requestIntercept = api.interceptors.request.use(
       (config) => {
         const authToken = auth?.authToken;
+
         if (authToken) {
           config.headers.Authorization = `Bearer ${authToken}`;
         }
@@ -24,8 +25,6 @@ const useAxios = () => {
 
     const responseIntercept = api.interceptors.response.use(
       (response) => {
-        console.log(response);
-
         return response;
       },
       async (error) => {
