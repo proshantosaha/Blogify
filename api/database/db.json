@@ -51,7 +51,7 @@
       "email": "salahuddin@learnwithsumit.com",
       "firstName": "Saad",
       "lastName": "Hasan",
-      "avatar": "avatar-1727344945784-318177829.png",
+      "avatar": "avatar-1727502925589-241874620.png",
       "bio": "rfdddttt",
       "password": "$2b$08$At/U5W1/ASt/F3zWCqOZnO75ftNVjwR.RVf0FEhEdQ0nHkll5tJ4m",
       "favourites": []
@@ -99,6 +99,9 @@
         },
         {
           "id": "3d2dde4b6548275fb066"
+        },
+        {
+          "id": "65aff389f1822a5e9f43"
         }
       ],
       "comments": [
@@ -130,6 +133,16 @@
             "firstName": "Saad",
             "lastName": "Hasan",
             "avatar": "avatar-1708764856675-623317122.jpg"
+          }
+        },
+        {
+          "id": "910241a22d5fe616a9ce",
+          "content": "আমি JavaScript এর অনেক  টিউটোরিয়াল দেখেছি অন্যান্য ভাইয়াদের channel থেকে। আমার মনে হয়, কিছু কিছু ভাইদের উদ্দেশ্য হয়তো বিগিনারদের ভীতু করা, ভাগিয়ে দেওয়া যে সহজ বিষয় কঠিন করে বুঝানো। আমি আপনার মধ্যে সেটা একদমই দেখি না। সত্যিকার অর্থে- আপনি একজন বিগিনারবান্ধব।। অসংখ্য ধন্যবাদ ভাইয়া আপনাকে।",
+          "author": {
+            "id": "65aff389f1822a5e9f43",
+            "firstName": "Saad",
+            "lastName": "Hasan",
+            "avatar": "avatar-1727502925589-241874620.png"
           }
         }
       ],
@@ -341,55 +354,24 @@
       "tags": "programming, algorithm, prototype, javascript",
       "likes": [],
       "comments": [],
-      "createdAt": "2024-09-22T14:17:15.160Z"
+      "createdAt": "2024-09-22T14:17:15.160Z",
+      "isFavourite": false
     },
     {
-      "id": "3a34c8202b44f746d57f",
-      "title": "gfrtr",
-      "content": "ttttttttttttttttt",
-      "thumbnail": "thumbnail-1727345026145-35437408.png",
+      "id": "2d4ffa30983778355300",
+      "title": "b",
+      "content": "g",
+      "thumbnail": "thumbnail-1727489608738-591853892.png",
       "author": {
         "id": "65aff389f1822a5e9f43",
         "firstName": "Saad",
         "lastName": "Hasan",
-        "avatar": "avatar-1727344945784-318177829.png"
+        "avatar": "avatar-1727377543702-56720620.jpg"
       },
-      "tags": "tttttttttttttttttt",
+      "tags": "g",
       "likes": [],
       "comments": [],
-      "createdAt": "2024-09-26T10:03:46.152Z"
-    },
-    {
-      "id": "ec76e56822652f6d11cf",
-      "title": "fggf",
-      "content": "gggg",
-      "thumbnail": "thumbnail-1727349948279-297304548.png",
-      "author": {
-        "id": "65aff389f1822a5e9f43",
-        "firstName": "Saad",
-        "lastName": "Hasan",
-        "avatar": "avatar-1727344945784-318177829.png"
-      },
-      "tags": "ggg",
-      "likes": [],
-      "comments": [],
-      "createdAt": "2024-09-26T11:25:48.287Z"
-    },
-    {
-      "id": "327a92fc25413d872f82",
-      "title": "ttt",
-      "content": "tttt",
-      "thumbnail": "thumbnail-1727374897565-753063214.png",
-      "author": {
-        "id": "65aff389f1822a5e9f43",
-        "firstName": "Saad",
-        "lastName": "Hasan",
-        "avatar": "avatar-1727344945784-318177829.png"
-      },
-      "tags": "tttt",
-      "likes": [],
-      "comments": [],
-      "createdAt": "2024-09-26T18:21:37.574Z"
+      "createdAt": "2024-09-28T02:13:28.952Z"
     }
   ]
 }
