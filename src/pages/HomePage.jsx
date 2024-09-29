@@ -19,14 +19,12 @@ const HomePage = () => {
   const { state, dispatch } = usePost();
   const { api } = useAxios();
 
-  console.log(state);
-
   useEffect(() => {
     dispatch({ type: actions.post.DATA_FETCHING });
     const fetchPost = async () => {
       try {
         const response = await api.get(
-          `${import.meta.env.VITE_SERVER_BASE_URL}/blogs`
+          `${import.meta.env.VITE_SERVER_BASE_URL}/blogs?limit=100`
         );
 
         if (response.status === 200) {
