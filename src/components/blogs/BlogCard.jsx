@@ -6,6 +6,10 @@ import useAvatar from "../../hooks/useAvatar";
 import ThreeDots from "../../assets/icons/3dots.svg";
 import EditIcon from "../../assets/icons/edit.svg";
 import DeleteIcons from "../../assets/icons/delete.svg";
+import { useAuth } from "../../hooks/useAuth";
+import { api } from "../../api/api";
+import { actions } from "../../actions";
+import { usePost } from "../../hooks/usePost";
 
 const BlogCard = ({
   id,
@@ -20,12 +24,39 @@ const BlogCard = ({
   const fullname = `${firstName} ${lastName}`;
   const navigate = useNavigate();
   const { avatarURL } = useAvatar(blog);
+  const { auth } = useAuth();
+  const { dispatch } = usePost();
 
   const [showAction, setShowAction] = useState();
+
+  const isMe = blog?.author?.id == auth.user?.id;
 
   const toggleAction = (e) => {
     e.stopPropagation();
     setShowAction(!showAction);
+  };
+
+  const handleClick = async (e) => {
+    e.stopPropagation();
+    dispatch({ type: actions.post.DATA_FETCHING });
+
+    try {
+      const response = await api.delete(`/blogs/${blog.id}`);
+
+      if (response.status === 200) {
+        dispatch({
+          type: actions.post.DATA_FETCHED,
+          data: response.data,
+        });
+      }
+    } catch (error) {
+      dispatch({
+        type: actions.post.DATA_FETCH_ERROR,
+        error: error.message,
+      });
+    }
+
+    console.log(e);
   };
 
   return (
@@ -33,7 +64,7 @@ const BlogCard = ({
       className="blog-card"
       onClick={(e) => {
         e.preventDefault();
-        navigate(`/blogs/${id}`);
+        navigate(`/blogs/${blog.id}`);
       }}
     >
       {thumbnail ? (
@@ -85,10 +116,13 @@ const BlogCard = ({
             <span>{length.likes}</span>
           </div>
         </div>
+
         <div className="absolute right-0 top-0">
-          <button onClick={toggleAction}>
-            <img src={ThreeDots} alt="3dots of Action" />
-          </button>
+          {isMe && (
+            <button onClick={toggleAction}>
+              <img src={ThreeDots} alt="3dots of Action" />
+            </button>
+          )}
 
           {/* <!-- Action Menus Popup --> */}
 
@@ -98,7 +132,10 @@ const BlogCard = ({
                 <img src={EditIcon} alt="Edit" />
                 Edit
               </button>
-              <button className="action-menu-item hover:text-red-500">
+              <button
+                className="action-menu-item hover:text-red-500"
+                onClick={handleClick}
+              >
                 <img src={DeleteIcons} alt="Delete" />
                 Delete
               </button>

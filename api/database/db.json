@@ -392,39 +392,6 @@
       "likes": [],
       "comments": [],
       "createdAt": "2024-02-24T17:06:43.629Z"
-    },
-    {
-      "id": "24b5d99af40fbc4527d7",
-      "title": "Node.js back-end debugging process",
-      "content": "Node.js Debugging Tools\nNode.js provides a range of debugging tools and techniques to debug back-end applications. Here are some of the popular ones:\n\n1. Console.log()\nConsole.log() is one of the most basic and widely used debugging techniques in Node.js. It is a simple function that logs messages to the console, which can be used to trace the execution flow and identify bugs. For example:\n\n2. Debugger Statement\nDebugger statement is a built-in Node.js debugger that stops the execution of code at a specific point and allows you to inspect variables, call stack, and execute code line by line. For example:3. Node.js Debug Module\nThe Node.js debug module is a powerful tool that provides a range of debugging options, including:\n\nBreakpoints\nConditional breakpoints\nWatch expressions\nStepping over, into, and out of functions\nHere is an example of how to use the debug module:\n\n3. Node.js Debug Module\nThe Node.js debug module is a powerful tool that provides a range of debugging options, including:\n\nBreakpoints\nConditional breakpoints\nWatch expressions\nStepping over, into, and out of functions\nHere is an example of how to use the debug module:\n\n",
-      "thumbnail": null,
-      "author": {
-        "id": "65aff389f1822a5e9f43",
-        "firstName": "Saad",
-        "lastName": "Hasan",
-        "avatar": "avatar-1726884317548-304800828.jpg"
-      },
-      "tags": "programming, algorithm, prototype, javascript",
-      "likes": [],
-      "comments": [],
-      "createdAt": "2024-09-22T14:17:15.160Z",
-      "isFavourite": false
-    },
-    {
-      "id": "2d4ffa30983778355300",
-      "title": "b",
-      "content": "g",
-      "thumbnail": "thumbnail-1727489608738-591853892.png",
-      "author": {
-        "id": "65aff389f1822a5e9f43",
-        "firstName": "Saad",
-        "lastName": "Hasan",
-        "avatar": "avatar-1727377543702-56720620.jpg"
-      },
-      "tags": "g",
-      "likes": [],
-      "comments": [],
-      "createdAt": "2024-09-28T02:13:28.952Z"
     }
   ]
 }

@@ -32,6 +32,13 @@ const postReducers = (state, action) => {
         loading: false,
         blogs: [...state.blogs, action.data],
       };
+
+    case actions.post.POST_DELETED:
+      return {
+        ...state,
+        loading: false,
+        blogs: [state.blogs.filter((item) => item.id != action.data)],
+      };
     default: {
       return state;
     }
